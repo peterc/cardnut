@@ -2,7 +2,7 @@ var express = require('express');
 var logfmt = require('logfmt');
 var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var io = require('socket.io')(server, { origins: ['*:*'] });
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
 
@@ -26,17 +26,6 @@ app.get('/sms', function(req, res) {
 
   res.set('Content-Type', 'text/xml');
   res.send('<?xml version="1.0" encoding="UTF-8"?><Response></Response>');
-});
-
-io.configure('production', function(){
-  io.set('transports', [            // all transports (optional if you want flashsocket)
-        'websocket'
-        , 'flashsocket'
-        , 'htmlfile'
-        , 'xhr-polling'
-        , 'jsonp-polling'
-  ]);
-  io.set('origins', '*:*');
 });
 
 // WebSocket stuff
