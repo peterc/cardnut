@@ -8,7 +8,7 @@ var messageQueue = [];
 
 app.use(logfmt.requestLogger());
 
-app.get('/sms', function(req, res) {
+app.post('/sms', function(req, res) {
   console.log(req.param('From'));
   console.log(req.param('Body'));
   res.set('Content-Type', 'text/xml');
