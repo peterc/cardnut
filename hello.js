@@ -28,6 +28,8 @@ app.get('/sms', function(req, res) {
   res.send('<?xml version="1.0" encoding="UTF-8"?><Response></Response>');
 });
 
+io.set('origins', '*:*');
+
 // WebSocket stuff
 io.on('connection', function(socket) {
   eventEmitter.on('message', function(message) {
