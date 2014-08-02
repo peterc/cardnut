@@ -11,16 +11,19 @@ app.use(logfmt.requestLogger());
 app.use(express.static('public'));
 
 // Stores messages waiting to go out over WebSocket
-var messageQueue = [];
-
-
+// var messageQueue = [];
 
 // Process an SMS coming in
 app.get('/sms', function(req, res) {
   var message = {};
   message.from = req.param('From');
   message.body = req.param('Body');
-  messageQueue.push(message);
+
+  var digits = message.body.match(/(\d+)(\,|\s)(\d+)/);
+  message.card1 = digits[1];
+  message.card2 = digits[3];
+
+  //messageQueue.push(message);
   eventEmitter.emit('message', message);
 
   res.set('Content-Type', 'text/xml');
