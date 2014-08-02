@@ -20,8 +20,10 @@ app.get('/sms', function(req, res) {
   message.body = req.param('Body');
 
   var digits = message.body.match(/(\d+)(\,|\s)(\d+)/);
-  message.card1 = digits[1];
-  message.card2 = digits[3];
+  if (digits) {
+    message.card1 = digits[1];
+    message.card2 = digits[3];
+  }
 
   //messageQueue.push(message);
   eventEmitter.emit('message', message);
