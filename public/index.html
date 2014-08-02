@@ -1,0 +1,19 @@
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <style>
+    BODY { font-size: xx-large; font-family: "Helvetica Neue"; }
+  </style>
+</head>
+<body>
+  <div id="debug"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io('http://localhost');
+    socket.on('message', function (data) {
+      console.log(data);
+      $('#debug').append("<p>" + JSON.stringify(data) + "</p>");
+    });
+  </script>
+  </body>
+</html>
