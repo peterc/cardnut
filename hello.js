@@ -11,7 +11,7 @@ app.use(logfmt.requestLogger());
 app.get('/sms', function(req, res) {
   res.set('Content-Type', 'text/xml');
   res.send('<?xml version="1.0" encoding="UTF-8"?>\
-<Response><Message to="' + req.param('From') + '"><Body>Received ' + req.param('From') + ' ' + req.param('Body') + '</Body></Message></Response>');
+<Response><Message>Received ' + req.param('From') + ' ' + req.param('Body') + '</Message></Response>');
 });
 
 var port = Number(process.env.PORT || 5000);
