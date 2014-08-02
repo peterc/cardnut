@@ -9,11 +9,9 @@ var messageQueue = [];
 app.use(logfmt.requestLogger());
 
 app.post('/sms', function(req, res) {
-  console.log(req.param('From'));
-  console.log(req.param('Body'));
   res.set('Content-Type', 'text/xml');
   res.send('<?xml version="1.0" encoding="UTF-8"?>\
-           <Response><Message>Received ' + req.param('From') + ' ' + req.param('Body') + '</Message></Response>');
+<Response><Message>Received ' + req.param('From') + ' ' + req.param('Body') + '</Message></Response>');
 });
 
 var port = Number(process.env.PORT || 5000);
