@@ -9,7 +9,8 @@
   "dependencies": {
     "express": ">= 4.7.0",
     "logfmt": ">= 1.1.0",
-    "socket.io": ">= 1.0.0"
+    "socket.io": ">= 1.0.0",
+    "utf8": ">= 2.0.0"
   },
   "engines": {
     "node": "0.10.30"
