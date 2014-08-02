@@ -1,0 +1,23 @@
+{
+  "name": "cardnut",
+  "version": "0.0.1",
+  "description": "ERROR: No README.md file found!",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": ">= 1.2.0",
+    "logfmt": ">= 1.1.0",
+    "socket.io": ">= 1.0.0"
+  },
+  "engines": {
+    "node": "0.10.30"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:cardnut.git"
+  },
+  "author": "",
+  "license": "BSD"
+}
