@@ -10,9 +10,6 @@ var eventEmitter = new events.EventEmitter();
 app.use(logfmt.requestLogger());
 app.use(express.static('public'));
 
-// Stores messages waiting to go out over WebSocket
-// var messageQueue = [];
-
 // Process an SMS coming in
 app.get('/sms', function(req, res) {
   var message = {};
@@ -25,26 +22,18 @@ app.get('/sms', function(req, res) {
     message.card2 = digits[3];
   }
 
-  //messageQueue.push(message);
   eventEmitter.emit('message', message);
 
   res.set('Content-Type', 'text/xml');
   res.send('<?xml version="1.0" encoding="UTF-8"?><Response></Response>');
 });
 
-
 // WebSocket stuff
 io.on('connection', function(socket) {
-
   eventEmitter.on('message', function(message) {
     socket.emit('message', message );
   });
-
-  console.log('connection!');
-  socket.on('event', function(data) {});
-  socket.on('disconnect', function() {});
 });
-
 
 // Start server
 var port = Number(process.env.PORT || 5000);
