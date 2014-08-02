@@ -10,7 +10,7 @@
   <div id="debug"></div>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    var socket = io('http://localhost');
+    var socket = io(window.location.protocol + "//" + window.location.host);
     socket.on('message', function (data) {
       console.log(data);
       $('#debug').append("<p>" + JSON.stringify(data) + "</p>");
